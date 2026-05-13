@@ -87,7 +87,7 @@ export default function HomePage() {
             }}
           >
             {ferramentas.map((item) => (
-              <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} />
+              <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} href={item.nome === "Calculadora OEE" ? "/ferramentas/oee" : undefined} />
             ))}
           </div>
 

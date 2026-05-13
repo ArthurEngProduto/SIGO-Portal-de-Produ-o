@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type SidebarProps = {
   ferramentasMenu: string[];
 };
@@ -29,11 +31,17 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
       </div>
       <nav>
         <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.9 }}>
-          <li>Dashboard</li>
+          <li><Link href="/" style={{ color: "inherit", textDecoration: "none" }}>Dashboard</Link></li>
           <li>Ferramentas</li>
           {ferramentasMenu.map((item) => (
             <li key={item} style={{ paddingLeft: "14px", color: "#9ca3af" }}>
-              • {item}
+              {item === "Calculadora OEE" ? (
+                <Link href="/ferramentas/oee" style={{ color: "inherit", textDecoration: "none" }}>
+                  • {item}
+                </Link>
+              ) : (
+                <>• {item}</>
+              )}
             </li>
           ))}
           <li>Empresas</li>
