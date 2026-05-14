@@ -6,9 +6,9 @@ const pct = (v: number) => `${v.toFixed(1)}%`;
 
 export default function OeeDetailTable({ rows }: Props) {
   return (
-    <section style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, padding: 16, overflowX: "auto", boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
+    <section style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, overflow: "hidden", boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
       <div style={{ background: "#123a73", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", fontWeight: 700 }}>Detalhamento</div>
-      <div style={{ padding: 14 }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, color: "#111827" }}>
+      <div style={{ padding: 14, overflowX: "auto" }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, color: "#111827" }}>
         <thead>
           <tr style={{ color: "#4b5563", textAlign: "left", background: "#f9fafb" }}>
             {[
