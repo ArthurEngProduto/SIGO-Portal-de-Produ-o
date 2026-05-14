@@ -45,8 +45,8 @@ const proximosModulos = [
 
 export default function HomePage() {
   return (
-    <main style={{ minHeight: "100vh", background: "#0f172a", color: "#e5e7eb" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", minHeight: "100vh" }}>
+    <main style={{ minHeight: "100vh", background: "#f3f6fb", color: "#111827" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr", minHeight: "100vh" }}>
         <Sidebar
           ferramentasMenu={[
             "Calculadora OEE",
@@ -57,10 +57,10 @@ export default function HomePage() {
           ]}
         />
 
-        <section style={{ padding: "24px" }}>
+        <section style={{ padding: "24px", marginLeft: 260 }}>
           <Header />
 
-          <h3 style={{ marginTop: "22px" }}>Resumo Operacional Demonstrativo</h3>
+          <h3 style={{ marginTop: "22px", color: "#1f2937" }}>Resumo Operacional Demonstrativo</h3>
           <div
             style={{
               display: "grid",
@@ -78,7 +78,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <h3 style={{ marginTop: "22px" }}>Área de Ferramentas</h3>
+          <h3 style={{ marginTop: "22px", color: "#1f2937" }}>Área de Ferramentas</h3>
           <div
             style={{
               display: "grid",

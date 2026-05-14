@@ -7,6 +7,18 @@ export type OeeInputs = {
   tempoCicloIdeal: number;
 };
 
+export type OeeContext = {
+  empresa: string;
+  unidade: string;
+  setor: string;
+  linha: string;
+  equipamento: string;
+  produto: string;
+  ordemProducao: string;
+  turno: string;
+  dataColeta: string;
+};
+
 export type OeeHistoryRow = {
   data: string;
   equipamento: string;

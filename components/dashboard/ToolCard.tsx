@@ -8,24 +8,14 @@ type ToolCardProps = {
 
 export default function ToolCard({ nome, descricao, href }: ToolCardProps) {
   const content = (
-    <article
-      style={{
-        border: "1px solid #374151",
-        borderRadius: "10px",
-        padding: "14px",
-        background: "#1f2937",
-      }}
-    >
-      <h4 style={{ margin: "0 0 8px" }}>{nome}</h4>
-      <p style={{ margin: 0, color: "#9ca3af", fontSize: "14px" }}>{descricao}</p>
+    <article style={{ border: "1px solid #dbe2ea", borderRadius: 12, background: "#fff", boxShadow: "0 1px 3px rgba(16,24,40,.06)", height: "100%" }}>
+      <div style={{ background: "#0b5ed7", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", fontWeight: 700 }}>{nome}</div>
+      <div style={{ padding: 14 }}>
+        <p style={{ margin: 0, color: "#374151", fontSize: "14px" }}>{descricao}</p>
+      </div>
     </article>
   );
 
   if (!href) return content;
-
-  return (
-    <Link href={href} style={{ textDecoration: "none", color: "inherit" }}>
-      {content}
-    </Link>
-  );
+  return <Link href={href} style={{ textDecoration: "none", color: "inherit" }}>{content}</Link>;
 }
