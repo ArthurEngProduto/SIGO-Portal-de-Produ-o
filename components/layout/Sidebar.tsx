@@ -42,7 +42,7 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
                 {active ? (
                   <Link
                     href="/ferramentas/oee"
-                    style={{ ...ferramentaItemStyle, background: "rgba(255,255,255,0.16)" }}
+                    style={{ ...ferramentaItemStyle, opacity: 0.95 }}
                   >
                     {item}
                   </Link>
