@@ -5,6 +5,17 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ ferramentasMenu }: SidebarProps) {
+  const ferramentaItemStyle = {
+    display: "block",
+    color: "inherit",
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: 500,
+    lineHeight: "20px",
+    padding: "6px 8px",
+    borderRadius: 8,
+  } as const;
+
   return (
     <aside
       style={{
@@ -29,11 +40,14 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
             return (
               <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
                 {active ? (
-                  <Link href="/ferramentas/oee" style={{ color: "inherit", textDecoration: "none", fontWeight: 700, display: "block", background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "2px 8px" }}>
+                  <Link
+                    href="/ferramentas/oee"
+                    style={{ ...ferramentaItemStyle, background: "rgba(255,255,255,0.16)" }}
+                  >
                     {item}
                   </Link>
                 ) : (
-                  <span style={{ opacity: 0.95 }}>{item}</span>
+                  <span style={{ ...ferramentaItemStyle, opacity: 0.95 }}>{item}</span>
                 )}
               </li>
             );
