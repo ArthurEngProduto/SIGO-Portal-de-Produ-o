@@ -97,7 +97,18 @@ export default function OeePage() {
           <section style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
             <div style={{ background: "#123a73", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", fontWeight: 700 }}>Resumo operacional</div>
             <div style={{ padding: 14, display: "flex", flexDirection: "column", gap: 8, color: "#1f2937" }}>
-              {[`Tempo planejado efetivo: ${calc.tempoPlanejado} min`,`Tempo operando efetivo: ${calc.tempoOperando} min`,`Refugo total: ${calc.refugo} peças`,`Taxa de refugo: ${inputs.quantidadeProduzida > 0 ? ((calc.refugo / inputs.quantidadeProduzida) * 100).toFixed(1) : "0.0"}%`,`Aproveitamento de produção: ${calc.qualidade.toFixed(1)}%`,`Eficiência global atual: ${calc.oee.toFixed(1)}%`].map((txt) => <p key={txt} style={{ margin: 0 }}>{txt}</p>)}
+              {[
+                { label: "Tempo planejado efetivo:", value: `${calc.tempoPlanejado} min` },
+                { label: "Tempo operando efetivo:", value: `${calc.tempoOperando} min` },
+                { label: "Refugo total:", value: `${calc.refugo} peças` },
+                { label: "Taxa de refugo:", value: `${inputs.quantidadeProduzida > 0 ? ((calc.refugo / inputs.quantidadeProduzida) * 100).toFixed(1) : "0.0"}%` },
+                { label: "Aproveitamento de produção:", value: `${calc.qualidade.toFixed(1)}%` },
+                { label: "Eficiência global atual:", value: `${calc.oee.toFixed(1)}%` },
+              ].map((item) => (
+                <p key={item.label} style={{ margin: 0 }}>
+                  {item.label} <strong>{item.value}</strong>
+                </p>
+              ))}
             </div>
           </section>
 
