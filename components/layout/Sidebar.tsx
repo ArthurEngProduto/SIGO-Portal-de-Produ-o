@@ -1,12 +1,20 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 type SidebarProps = {
   ferramentasMenu: string[];
 };
 
 export default function Sidebar({ ferramentasMenu }: SidebarProps) {
+  const pathname = usePathname();
+  const [isFerramentasOpen, setIsFerramentasOpen] = useState(() =>
+    pathname.startsWith("/ferramentas")
+  );
+
   const ferramentaItemStyle = {
-    display: "block",
+    display: "block", 
     color: "inherit",
     textDecoration: "none",
     fontSize: "14px",
@@ -33,25 +41,56 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
     >
       <nav>
         <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.9 }}>
-          <li><Link href="/" style={{ color: "inherit", textDecoration: "none" }}>Dashboard</Link></li>
-          <li style={{ color: "#dbeafe", marginTop: 6 }}>Ferramentas</li>
-          {ferramentasMenu.map((item) => {
-            const active = item === "Calculadora OEE";
-            return (
-              <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
-                {active ? (
-                  <Link
-                    href="/ferramentas/oee"
-                    style={{ ...ferramentaItemStyle, opacity: 0.95 }}
-                  >
-                    {item}
-                  </Link>
-                ) : (
-                  <span style={{ ...ferramentaItemStyle, opacity: 0.95 }}>{item}</span>
-                )}
-              </li>
-            );
-          })}
+          <li>
+            <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
+              Dashboard
+            </Link>
+          </li>
+          <li style={{ marginTop: 6 }}>
+            <button
+              type="button"
+              onClick={() => setIsFerramentasOpen((open) => !open)}
+              style={{
+                color: "#dbeafe",
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                margin: 0,
+                font: "inherit",
+                cursor: "pointer",
+              }}
+              aria-expanded={isFerramentasOpen}
+              aria-controls="ferramentas-submenu"
+            >
+              Ferramentas
+            </button>
+          </li>
+          {isFerramentasOpen && (
+            <li>
+              <ul
+              id="ferramentas-submenu"
+              style={{ listStyle: "none", padding: 0, margin: 0 }}
+            >
+              {ferramentasMenu.map((item) => {
+                const active = item === "Calculadora OEE";
+                return (
+                  <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
+                    {active ? (
+                      <Link
+                        href="/ferramentas/oee"
+                        style={{ ...ferramentaItemStyle, opacity: 0.95 }}
+                      >
+                        {item}
+                      </Link>
+                    ) : (
+                      <span style={{ ...ferramentaItemStyle, opacity: 0.95 }}>{item}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            </li>
+          )}
           <li style={{ marginTop: 10 }}>Empresas</li>
           <li>Usuários</li>
           <li>Configurações</li>
