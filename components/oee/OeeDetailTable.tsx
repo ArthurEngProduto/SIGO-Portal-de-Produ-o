@@ -73,7 +73,7 @@ export default function OeeDetailTable({ rows }: Props) {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 12 }}>
               {groups.map((group) => (
                 <section key={group.title} style={{ border: "1px solid #eef2f7", borderRadius: 8, padding: 10, background: "#f8fafc" }}>
-                  <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#123a73", display: "flex", alignItems: "center", gap: 6 }}>
+                  <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#123a73", display: "flex", alignItems: "center", justifyContent: "center", gap: 6, textAlign: "center" }}>
                     <group.icon size={16} color="#123a73" />
                     <span>{group.title}</span>
                   </h4>
