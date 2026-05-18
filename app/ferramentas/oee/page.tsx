@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Download, FolderOpen, Gauge, PlusCircle, Save } from "lucide-react";
 import Sidebar from "../../../components/layout/Sidebar";
 import OeeContextForm from "../../../components/oee/OeeContextForm";
 import OeeDetailTable from "../../../components/oee/OeeDetailTable";
@@ -49,28 +50,68 @@ export default function OeePage() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr", minHeight: "100vh" }}>
         <Sidebar ferramentasMenu={["Calculadora OEE", "Indicadores de Produção", "Produtividade", "Paradas", "Perdas e Refugos"]} />
         <section style={{ padding: 24, marginLeft: 260, display: "grid", gap: 14 }}>
-          <header style={{ background: "#123a73", border: "1px solid #123a73", borderRadius: 12, padding: 18, color: "#fff", boxShadow: "0 1px 3px rgba(16,24,40,.08)" }}>
-            <h2 style={{ margin: 0 }}>Calculadora OEE</h2>
-            <p style={{ margin: "8px 0 14px", color: "#dbeafe" }}>Calcule e analise disponibilidade, performance, qualidade e eficiência global do equipamento.</p>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <header
+            style={{
+              background: "linear-gradient(135deg, #163b75 0%, #1f4f96 100%)",
+              borderRadius: 20,
+              padding: 36,
+              color: "#fff",
+              boxShadow: "0 12px 30px rgba(15, 23, 42, 0.18)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: 28,
+              flexWrap: "wrap",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 18, flex: "1 1 360px", minWidth: 280 }}>
+              <div
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: 16,
+                  background: "rgba(255,255,255,0.16)",
+                  display: "grid",
+                  placeItems: "center",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,.26)",
+                }}
+              >
+                <Gauge size={34} />
+              </div>
+              <div style={{ display: "grid", gap: 10 }}>
+                <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.1, fontWeight: 700 }}>Calculadora OEE</h2>
+                <p style={{ margin: 0, maxWidth: 700, color: "rgba(255,255,255,.86)", fontSize: 16, lineHeight: 1.5 }}>
+                  Monitore eficiência operacional em tempo real com indicadores inteligentes de disponibilidade, performance e qualidade.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end", flex: "1 1 340px" }}>
               {[
-                { t: "Novo cálculo", onClick: clearAll, primary: true },
-                { t: "Carregar exemplo", onClick: loadExample, primary: true },
-                { t: "Exportar", onClick: () => window.alert("Exportação demo") },
-                { t: "Salvar análise", onClick: () => window.alert("Salvo localmente (demo)") },
+                { t: "Novo cálculo", onClick: clearAll, Icon: PlusCircle, primary: true },
+                { t: "Carregar exemplo", onClick: loadExample, Icon: FolderOpen },
+                { t: "Exportar", onClick: () => window.alert("Exportação demo"), Icon: Download },
+                { t: "Salvar análise", onClick: () => window.alert("Salvo localmente (demo)"), Icon: Save },
               ].map((b) => (
                 <button
                   key={b.t}
                   onClick={b.onClick}
                   style={{
-                    background: b.primary ? "#123a73" : "#ffffff",
-                    color: b.primary ? "#ffffff" : "#123a73",
-                    border: "1px solid #b7c9e6",
-                    borderRadius: 8,
-                    padding: "8px 12px",
+                    background: b.primary ? "#ffffff" : "transparent",
+                    color: b.primary ? "#123a73" : "#ffffff",
+                    border: b.primary ? "1px solid #ffffff" : "1px solid rgba(255,255,255,.5)",
+                    borderRadius: 12,
+                    minHeight: 48,
+                    padding: "0 16px",
                     fontWeight: 600,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    transition: "all .2s ease",
+                    cursor: "pointer",
                   }}
                 >
+                  <b.Icon size={18} />
                   {b.t}
                 </button>
               ))}
