@@ -224,6 +224,9 @@ export default function OeePage() {
             margin: 0 0 6px 0;
             font-weight: 700;
             margin: 4px 0 12px 0;
+            color: #111827;
+            opacity: 1 !important;
+          }
 
           .print-area section,
           .print-area article {
@@ -231,7 +234,7 @@ export default function OeePage() {
             page-break-inside: avoid;
             box-shadow: none !important;
             border-radius: 6px !important;
-            border-color: #d1d5db !important;
+            border-color: #9ca3af !important;
           }
 
           .print-area section > div:first-child,
@@ -239,6 +242,8 @@ export default function OeePage() {
             padding: 5px 8px !important;
             font-size: 11px !important;
             line-height: 1.2;
+            color: #111827 !important;
+            opacity: 1 !important;
           }
 
           .print-area section > div:last-child,
@@ -254,6 +259,12 @@ export default function OeePage() {
           .print-area label {
             font-size: 10px !important;
             line-height: 1.2 !important;
+            color: #111827 !important;
+            opacity: 1 !important;
+          }
+
+          .print-area strong {
+            font-weight: 700 !important;
           }
 
           .print-area input {
@@ -262,13 +273,17 @@ export default function OeePage() {
             background: transparent !important;
             font-size: 10px !important;
             color: #111827 !important;
+            font-weight: 700 !important;
+            opacity: 1 !important;
             pointer-events: none;
+          }
+
+          .print-area [style*="opacity"] {
+            opacity: 1 !important;
           }
 
           .print-area svg {
             max-height: 90px !important;
-          } 
-            color: #111827;
           }
         }
       `}</style>
