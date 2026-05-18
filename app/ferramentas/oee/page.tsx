@@ -86,7 +86,7 @@ export default function OeePage() {
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end", flex: "1 1 340px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 160px)", gap: 10, justifyContent: "flex-end", flex: "1 1 340px" }}>
               {[
                 { t: "Novo cálculo", onClick: clearAll, Icon: PlusCircle, primary: true },
                 { t: "Carregar exemplo", onClick: loadExample, Icon: FolderOpen },
@@ -101,11 +101,14 @@ export default function OeePage() {
                     color: b.primary ? "#123a73" : "#ffffff",
                     border: b.primary ? "1px solid #ffffff" : "1px solid rgba(255,255,255,.5)",
                     borderRadius: 12,
-                    minHeight: 48,
-                    padding: "0 16px",
+                    width: "160px",
+                    height: 44,
+                    padding: "0 12px",
                     fontWeight: 600,
                     display: "inline-flex",
+                    justifyContent: "center",
                     alignItems: "center",
+                    whiteSpace: "nowrap",
                     gap: 8,
                     transition: "all .2s ease",
                     cursor: "pointer",
