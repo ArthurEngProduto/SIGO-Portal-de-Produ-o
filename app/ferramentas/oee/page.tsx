@@ -45,6 +45,20 @@ export default function OeePage() {
 
   const history: OeeHistoryRow[] = [{ data: context.dataColeta || "-", equipamento: context.equipamento || "-", produto: context.produto || "-", ordem: context.ordemProducao || "-", turno: context.turno || "-", tempoPlanejado: calc.tempoPlanejado, tempoOperando: calc.tempoOperando, paradaPlanejada: inputs.paradaPlanejada, paradaNaoPlanejada: inputs.paradaNaoPlanejada, producaoTotal: inputs.quantidadeProduzida, producaoBoa: inputs.quantidadeBoa, refugo: calc.refugo, disponibilidade: calc.disponibilidade, performance: calc.performance, qualidade: calc.qualidade, oee: calc.oee }];
 
+  const exportToPdf = () => {
+    const fallbackOrder = context.ordemProducao?.trim() || "sem-op";
+    const safeOrder = fallbackOrder.replace(/[^a-zA-Z0-9-_]/g, "-");
+    const previousTitle = document.title;
+    document.title = `analise-oee-${safeOrder}.pdf`;
+
+    setTimeout(() => {
+      window.print();
+      setTimeout(() => {
+        document.title = previousTitle;
+      }, 250);
+    }, 0);
+  };
+
   return (
     <main style={{ minHeight: "100vh", background: "#f3f6fb", color: "#111827" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr", minHeight: "100vh" }}>
@@ -90,7 +104,7 @@ export default function OeePage() {
               {[
                 { t: "Novo cálculo", onClick: clearAll, Icon: PlusCircle, primary: true },
                 { t: "Carregar exemplo", onClick: loadExample, Icon: FolderOpen },
-                { t: "Exportar", onClick: () => window.alert("Exportação demo"), Icon: Download },
+                { t: "Exportar PDF", onClick: exportToPdf, Icon: Download },
                 { t: "Salvar análise", onClick: () => window.alert("Salvo localmente (demo)"), Icon: Save },
               ].map((b) => (
                 <button
@@ -120,6 +134,8 @@ export default function OeePage() {
               ))}
             </div>
           </header>
+
+          <div className="print-only-title">Análise OEE</div>
 
           <OeeContextForm values={context} onChange={(field, value) => setContext((p) => ({ ...p, [field]: value }))} />
           <OeeInputCard values={inputs} onChange={(field, value) => setInputs((p) => ({ ...p, [field]: Number.isFinite(value) ? Math.max(0, value) : 0 }))} />
@@ -159,6 +175,22 @@ export default function OeePage() {
           <OeeDetailTable rows={history} />
         </section>
       </div>
+      
+      <style jsx global>{`
+        .print-only-title {
+          display: none;
+        }
+
+        @media print {
+          .print-only-title {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 4px 0 12px 0;
+            color: #111827;
+          }
+        }
+      `}</style>
     </main>
   );
 }
