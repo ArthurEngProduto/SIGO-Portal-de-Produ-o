@@ -64,7 +64,7 @@ export default function OeePage() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr", minHeight: "100vh" }}>
         <Sidebar ferramentasMenu={["Calculadora OEE", "Indicadores de Produção", "Produtividade", "Paradas", "Perdas e Refugos"]} />
         <section style={{ padding: 24, marginLeft: 260, display: "grid", gap: 14 }}>
-          <header
+          <header className="screen-only"
             style={{
               background: "linear-gradient(135deg, #163b75 0%, #1f4f96 100%)",
               borderRadius: 20,
@@ -137,7 +137,7 @@ export default function OeePage() {
 
           <div className="print-only-title">Análise OEE</div>
 
-          <OeeContextForm values={context} onChange={(field, value) => setContext((p) => ({ ...p, [field]: value }))} />
+          <div className="print-area"><OeeContextForm values={context} onChange={(field, value) => setContext((p) => ({ ...p, [field]: value }))} />
           <OeeInputCard values={inputs} onChange={(field, value) => setInputs((p) => ({ ...p, [field]: Number.isFinite(value) ? Math.max(0, value) : 0 }))} />
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
@@ -147,7 +147,7 @@ export default function OeePage() {
             <OeeResultCard title="Qualidade" value={calc.qualidade} description="Peças boas sobre total produzido." />
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
+          <div className="screen-only" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
             <OeeGaugeCard label="Indicador principal de OEE" value={clampPct(calc.oee)} large />
             <OeeGaugeCard label="Disponibilidade" value={clampPct(calc.disponibilidade)} />
             <OeeGaugeCard label="Performance" value={clampPct(calc.performance)} />
@@ -172,21 +172,102 @@ export default function OeePage() {
             </div>
           </section>
 
-          <OeeDetailTable rows={history} />
+          <OeeDetailTable rows={history} /></div>
         </section>
       </div>
-      
+
       <style jsx global>{`
         .print-only-title {
           display: none;
         }
 
+        @page {
+          size: A4;
+          margin: 10mm;
+        }
+
         @media print {
+          body {
+            background: #fff !important;
+          }
+
+          main,
+          main > div,
+          main > div > section {
+            background: #fff !important;
+          }
+
+          .screen-only,
+          aside,
+          nav,
+          button {
+            display: none !important;
+          }
+
+          main > div > section {
+            margin-left: 0 !important;
+            padding: 0 !important;
+            gap: 8px !important;
+          }
+
+          .print-area {
+            display: grid;
+            gap: 8px;
+            font-size: 11px;
+            line-height: 1.25;
+          }
+
           .print-only-title {
             display: block;
+            font-size: 20px;
             font-size: 28px;
+            margin: 0 0 6px 0;
             font-weight: 700;
             margin: 4px 0 12px 0;
+
+          .print-area section,
+          .print-area article {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none !important;
+            border-radius: 6px !important;
+            border-color: #d1d5db !important;
+          }
+
+          .print-area section > div:first-child,
+          .print-area article > div:first-child {
+            padding: 5px 8px !important;
+            font-size: 11px !important;
+            line-height: 1.2;
+          }
+
+          .print-area section > div:last-child,
+          .print-area article > div:last-child {
+            padding: 8px !important;
+            gap: 6px !important;
+          }
+
+          .print-area p,
+          .print-area span,
+          .print-area li,
+          .print-area strong,
+          .print-area label {
+            font-size: 10px !important;
+            line-height: 1.2 !important;
+          }
+
+          .print-area input {
+            border: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            font-size: 10px !important;
+            color: #111827 !important;
+            pointer-events: none;
+          }
+
+          .print-area svg {
+            max-height: 90px !important;
+          } 
             color: #111827;
           }
         }
