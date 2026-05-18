@@ -72,14 +72,16 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
               style={{ listStyle: "none", padding: 0, margin: 0 }}
             >
               {ferramentasMenu.map((item) => {
-                const active = item === "Calculadora OEE";
+                const itemHref =
+                  item === "Calculadora OEE"
+                    ? "/ferramentas/oee"
+                    : item === "Indicadores de Produção"
+                      ? "/ferramentas/indicadores-producao"
+                      : null;
                 return (
                   <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
-                    {active ? (
-                      <Link
-                        href="/ferramentas/oee"
-                        style={{ ...ferramentaItemStyle, opacity: 0.95 }}
-                      >
+                    {itemHref ? (
+                      <Link href={itemHref} style={{ ...ferramentaItemStyle, opacity: 0.95 }}>
                         {item}
                       </Link>
                     ) : (
