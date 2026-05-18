@@ -1,11 +1,20 @@
 import { OeeHistoryRow } from "./types";
 
 type Props = { rows: OeeHistoryRow[] };
+type DetailItem = {
+  label: string;
+  value: string;
+  highlight?: boolean;
+};
+type DetailGroup = {
+  title: string;
+  items: (r: OeeHistoryRow) => DetailItem[];
+};
 
 const pct = (v: number) => `${v.toFixed(1)}%`;
 
 export default function OeeDetailTable({ rows }: Props) {
-  const groups = [
+  const groups: DetailGroup[] = [
     {
       title: "Contexto da produção",
       items: (r: OeeHistoryRow) => [
