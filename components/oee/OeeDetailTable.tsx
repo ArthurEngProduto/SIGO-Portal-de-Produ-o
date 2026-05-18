@@ -1,3 +1,6 @@
+import { BarChart3, ClipboardList, Clock3, Package } from "lucide-react";
+import type { ComponentType } from "react";
+
 import { OeeHistoryRow } from "./types";
 
 type Props = { rows: OeeHistoryRow[] };
@@ -8,6 +11,7 @@ type DetailItem = {
 };
 type DetailGroup = {
   title: string;
+  icon: ComponentType<{ size?: number; color?: string }>;
   items: (r: OeeHistoryRow) => DetailItem[];
 };
 
@@ -17,6 +21,7 @@ export default function OeeDetailTable({ rows }: Props) {
   const groups: DetailGroup[] = [
     {
       title: "Contexto da produção",
+      icon: ClipboardList,
       items: (r: OeeHistoryRow) => [
         { label: "Data", value: r.data },
         { label: "Equipamento", value: r.equipamento },
@@ -27,6 +32,7 @@ export default function OeeDetailTable({ rows }: Props) {
     },
     {
       title: "Tempos e paradas",
+      icon: Clock3,
       items: (r: OeeHistoryRow) => [
         { label: "Tempo planejado", value: `${r.tempoPlanejado} min` },
         { label: "Tempo operando", value: `${r.tempoOperando} min` },
@@ -36,6 +42,7 @@ export default function OeeDetailTable({ rows }: Props) {
     },
     {
       title: "Produção e qualidade",
+      icon: Package,
       items: (r: OeeHistoryRow) => [
         { label: "Produção total", value: `${r.producaoTotal} peças` },
         { label: "Produção boa", value: `${r.producaoBoa} peças` },
@@ -44,6 +51,7 @@ export default function OeeDetailTable({ rows }: Props) {
     },
     {
       title: "Indicadores",
+      icon: BarChart3,
       items: (r: OeeHistoryRow) => [
         { label: "Disponibilidade", value: pct(r.disponibilidade) },
         { label: "Performance", value: pct(r.performance) },
@@ -65,7 +73,10 @@ export default function OeeDetailTable({ rows }: Props) {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 12 }}>
               {groups.map((group) => (
                 <section key={group.title} style={{ border: "1px solid #eef2f7", borderRadius: 8, padding: 10, background: "#f8fafc" }}>
-                  <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#123a73" }}>{group.title}</h4>
+                  <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#123a73", display: "flex", alignItems: "center", gap: 6 }}>
+                    <group.icon size={16} color="#123a73" />
+                    <span>{group.title}</span>
+                  </h4>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
                     {group.items(r).map((item) => (
                       <li key={item.label} style={{ display: "flex", justifyContent: "space-between", gap: 10, fontSize: 13, color: "#111827" }}>
