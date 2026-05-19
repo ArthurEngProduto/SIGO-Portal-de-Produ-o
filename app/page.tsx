@@ -93,7 +93,9 @@ export default function HomePage() {
                   ? "/ferramentas/produtividade"
                   : item.nome === "Paradas"
                     ? "/ferramentas/paradas"
-                    : undefined;
+                    : item.nome === "Perdas e Refugos"
+                      ? "/ferramentas/perdas-refugos"
+                      : undefined;
 
               return <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} href={href} />;
             })}

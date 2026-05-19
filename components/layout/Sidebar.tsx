@@ -81,7 +81,9 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
                         ? "/ferramentas/produtividade"
                         : item === "Paradas"
                           ? "/ferramentas/paradas"
-                          : null;
+                          : item === "Perdas e Refugos"
+                            ? "/ferramentas/perdas-refugos"
+                            : null;
                 return (
                   <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
                     {itemHref ? (
