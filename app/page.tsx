@@ -91,7 +91,9 @@ export default function HomePage() {
                 ? "/ferramentas/oee"
                 : item.nome === "Produtividade"
                   ? "/ferramentas/produtividade"
-                  : undefined;
+                  : item.nome === "Paradas"
+                    ? "/ferramentas/paradas"
+                    : undefined;
 
               return <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} href={href} />;
             })}

@@ -79,7 +79,9 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
                       ? "/ferramentas/indicadores-producao"
                       : item === "Produtividade"
                         ? "/ferramentas/produtividade"
-                        : null;
+                        : item === "Paradas"
+                          ? "/ferramentas/paradas"
+                          : null;
                 return (
                   <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
                     {itemHref ? (
