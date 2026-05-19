@@ -66,6 +66,20 @@ export default function IndicadoresProducaoPage() {
     { title: "Produção líquida", value: calc.producaoLiquida, description: "Total efetivo de peças aprovadas.", suffix: " peças" },
   ];
 
+  const exportToPdf = () => {
+    const fallbackOrder = context.ordemProducao?.trim() || "sem-op";
+    const safeOrder = fallbackOrder.replace(/[^a-zA-Z0-9-_]/g, "-");
+    const previousTitle = document.title;
+    document.title = `indicadores-producao-${safeOrder}.pdf`;
+
+    setTimeout(() => {
+      window.print();
+      setTimeout(() => {
+        document.title = previousTitle;
+      }, 250);
+    }, 0);
+  };
+
   return (
     <main style={{ minHeight: "100vh", background: "#f3f6fb", color: "#111827" }}>
       <div style={{ display: "grid", minHeight: "100vh" }}>
@@ -90,7 +104,7 @@ export default function IndicadoresProducaoPage() {
               {[
                 { t: "Novo registro", onClick: () => { setContext(emptyContext); setInputs(emptyInputs); }, Icon: PlusCircle, primary: true },
                 { t: "Carregar exemplo", onClick: () => { setContext(exampleContext); setInputs(exampleInputs); }, Icon: FolderOpen },
-                { t: "Exportar PDF", onClick: () => window.print(), Icon: Download },
+                { t: "Exportar PDF", onClick: exportToPdf, Icon: Download },
                 { t: "Salvar análise", onClick: () => window.alert("Análise salva localmente (demo)."), Icon: Save },
               ].map((b) => (
                 <button key={b.t} onClick={b.onClick} style={{ background: b.primary ? "#ffffff" : "transparent", color: b.primary ? "#123a73" : "#ffffff", border: b.primary ? "1px solid #ffffff" : "1px solid rgba(255,255,255,.5)", borderRadius: 12, width: "160px", height: 44, padding: "0 12px", fontWeight: 600, display: "inline-flex", justifyContent: "center", alignItems: "center", whiteSpace: "nowrap", gap: 8, transition: "all .2s ease", cursor: "pointer" }}>
@@ -101,6 +115,9 @@ export default function IndicadoresProducaoPage() {
             </div>
           </header>
 
+          <div className="print-only-title">Indicadores de Produção</div>
+
+          <div className="print-area" style={{ display: "grid", gap: 14 }}>
           <section style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
             <div style={{ background: "#123a73", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", fontWeight: 700 }}>Contexto da análise</div>
             <div style={{ padding: 14, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
@@ -207,21 +224,117 @@ export default function IndicadoresProducaoPage() {
               </article>
             </div>
           </section>
+          </div>
         </section>
       </div>
       <style jsx global>{`
+        .print-only-title {
+          display: none;
+        }
+
+        @page {
+          size: A4;
+          margin: 10mm;
+        }
+
         @media print {
+          body {
+            background: #fff !important;
+          }
+
+          main,
+          main > div,
+          .indicadores-content {
+            background: #fff !important;
+          }
+
           aside,
           nav,
           .screen-only,
           button {
             display: none !important;
-            visibility: hidden !important;
           }
 
           .indicadores-content {
             margin-left: 0 !important;
             padding: 0 !important;
+            gap: 8px !important;
+          }
+
+          .print-area {
+            display: grid !important;
+            gap: 8px !important;
+            font-size: 11px;
+            line-height: 1.25;
+          }
+
+          .print-only-title {
+            display: block;
+            font-size: 28px;
+            margin: 4px 0 12px 0;
+            font-weight: 700;
+            color: #111827;
+            opacity: 1 !important;
+          }
+
+          .print-area section,
+          .print-area article {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none !important;
+            border-radius: 6px !important;
+            border-color: #9ca3af !important;
+          }
+
+          .print-area section > div:first-child,
+          .print-area article > div:first-child {
+            padding: 5px 8px !important;
+            font-size: 11px !important;
+            line-height: 1.2;
+            color: #111827 !important;
+            opacity: 1 !important;
+          }
+
+          .print-area section > div:last-child,
+          .print-area article > div:last-child {
+            padding: 8px !important;
+            gap: 6px !important;
+          }
+
+          .print-area p,
+          .print-area span,
+          .print-area li,
+          .print-area strong,
+          .print-area label,
+          .print-area h3,
+          .print-area h4 {
+            font-size: 10px !important;
+            line-height: 1.2 !important;
+            color: #111827 !important;
+            opacity: 1 !important;
+          }
+
+          .print-area strong {
+            font-weight: 700 !important;
+          }
+
+          .print-area input {
+            border: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            font-size: 10px !important;
+            color: #111827 !important;
+            font-weight: 700 !important;
+            opacity: 1 !important;
+            pointer-events: none;
+          }
+
+          .print-area [style*="opacity"] {
+            opacity: 1 !important;
+          }
+
+          .print-area svg {
+            max-height: 90px !important;
           }
         }
       `}</style>
