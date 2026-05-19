@@ -86,9 +86,15 @@ export default function HomePage() {
               gap: "12px",
             }}
           >
-            {ferramentas.map((item) => (
-              <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} href={item.nome === "Calculadora OEE" ? "/ferramentas/oee" : undefined} />
-            ))}
+            {ferramentas.map((item) => {
+              const href = item.nome === "Calculadora OEE"
+                ? "/ferramentas/oee"
+                : item.nome === "Produtividade"
+                  ? "/ferramentas/produtividade"
+                  : undefined;
+
+              return <ToolCard key={item.nome} nome={item.nome} descricao={item.descricao} href={href} />;
+            })}
           </div>
 
           <PriorityCard titulo="Próximos módulos" itens={proximosModulos} />

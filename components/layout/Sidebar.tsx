@@ -77,7 +77,9 @@ export default function Sidebar({ ferramentasMenu }: SidebarProps) {
                     ? "/ferramentas/oee"
                     : item === "Indicadores de Produção"
                       ? "/ferramentas/indicadores-producao"
-                      : null;
+                      : item === "Produtividade"
+                        ? "/ferramentas/produtividade"
+                        : null;
                 return (
                   <li key={item} style={{ paddingLeft: "8px", color: "#eff6ff" }}>
                     {itemHref ? (
