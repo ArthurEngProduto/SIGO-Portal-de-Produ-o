@@ -1,0 +1,31 @@
+[33m1c0f8f1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: commit: Padroniza indicadores de produção com OEE
+[33mff5eb13[m HEAD@{1}: commit: Ajusta tamanho dos textos dos indicadores
+[33m3e1d7c5[m HEAD@{2}: commit: Cria rota de indicadores de produção
+[33m50c1703[m HEAD@{3}: commit: Melhora contraste do PDF OEE sem alterar layout
+[33mbcbe116[m HEAD@{4}: commit: Ajusta layout de impressão do PDF OEE
+[33mfb843e8[m HEAD@{5}: commit: Adiciona exportação PDF da análise OEE
+[33m0f9136e[m HEAD@{6}: commit: Centraliza subtítulos do detalhamento OEE
+[33m72885f9[m HEAD@{7}: commit: Ajusta botões do hero da calculadora OEE
+[33m6a4adfb[m HEAD@{8}: commit: Redesenha hero card da calculadora OEE
+[33m0cefd30[m HEAD@{9}: commit: Centraliza subtítulos do detalhamento OEE
+[33m6c928b1[m HEAD@{10}: commit: Adiciona ícones ao detalhamento OEE
+[33m47bc247[m HEAD@{11}: commit: Adiciona ícones aos subtítulos do detalhamento
+[33mf6a5a84[m HEAD@{12}: commit: Corrige tipagem do detalhamento OEE
+[33m6048b52[m HEAD@{13}: commit: Melhora layout do detalhamento OEE
+[33mf4a043b[m HEAD@{14}: commit: Destaca valores do resumo operacional
+[33mc4e8b3f[m HEAD@{15}: commit: Ajusta resumo operacional do OEE
+[33m0f6083b[m HEAD@{16}: commit: Ajusta visual da sidebar
+[33m4d32520[m HEAD@{17}: commit: Ajusta visual da sidebar
+[33mb50f612[m HEAD@{18}: commit: Ajusta visual da sidebar
+[33m0f0710c[m HEAD@{19}: commit: Remove bloco superior da sidebar
+[33mec900a2[m HEAD@{20}: reset: moving to ec900a2
+[33mec900a2[m HEAD@{21}: reset: moving to ec900a2
+[33mec900a2[m HEAD@{22}: reset: moving to ec900a2
+[33mec900a2[m HEAD@{23}: reset: moving to ec900a2
+[33mec900a2[m HEAD@{24}: commit: Adiciona calculadora OEE
+[33m0dfc130[m HEAD@{25}: commit: Descreva aqui o que foi alterado
+[33m1ad2e9d[m HEAD@{26}: commit: Ajusta design da calculadora OEE
+[33maaac61b[m HEAD@{27}: commit: Cria modulo calculadora OEE
+[33m9001ccc[m[33m ([m[1;31morigin/master[m[33m)[m HEAD@{28}: Branch: renamed refs/heads/master to refs/heads/main
+[33m9001ccc[m[33m ([m[1;31morigin/master[m[33m)[m HEAD@{30}: commit: Cria tela inicial da plataforma SaaS industrial
+[33m211981f[m HEAD@{31}: commit (initial): Initial commit from Create Next App
