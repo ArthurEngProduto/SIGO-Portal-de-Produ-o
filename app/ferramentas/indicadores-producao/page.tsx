@@ -90,7 +90,7 @@ export default function IndicadoresProducaoPage() {
               {[
                 { t: "Novo registro", onClick: () => { setContext(emptyContext); setInputs(emptyInputs); }, Icon: PlusCircle, primary: true },
                 { t: "Carregar exemplo", onClick: () => { setContext(exampleContext); setInputs(exampleInputs); }, Icon: FolderOpen },
-                { t: "Exportar PDF", onClick: () => window.alert("Exportação PDF será habilitada em breve."), Icon: Download },
+                { t: "Exportar PDF", onClick: () => window.print(), Icon: Download },
                 { t: "Salvar análise", onClick: () => window.alert("Análise salva localmente (demo)."), Icon: Save },
               ].map((b) => (
                 <button key={b.t} onClick={b.onClick} style={{ background: b.primary ? "#ffffff" : "transparent", color: b.primary ? "#123a73" : "#ffffff", border: b.primary ? "1px solid #ffffff" : "1px solid rgba(255,255,255,.5)", borderRadius: 12, width: "160px", height: 44, padding: "0 12px", fontWeight: 600, display: "inline-flex", justifyContent: "center", alignItems: "center", whiteSpace: "nowrap", gap: 8, transition: "all .2s ease", cursor: "pointer" }}>
