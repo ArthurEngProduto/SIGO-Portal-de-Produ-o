@@ -60,7 +60,7 @@ export default function IndicadoresProducaoPage() {
   const indicatorCards = [
     { title: "Atingimento da meta", value: calc.atingimentoMeta * 100, description: "Volume realizado em relação ao planejado.", suffix: "%" },
     { title: "Produtividade por hora", value: calc.produtividadeHora, description: "Peças produzidas por hora trabalhada.", suffix: " peças/h" },
-    { title: "Produtividade por operador", value: calc.produtividadeOperador, description: "Produção média por operador no período.", suffix: " peças/operador" },
+    { title: "Prod. por operador", value: calc.produtividadeOperador, description: "Produção média por operador no período.", suffix: " peças/operador" },
     { title: "Taxa de aprovação", value: calc.taxaAprovacao * 100, description: "Peças aprovadas sobre o total produzido.", suffix: "%" },
     { title: "Taxa de reprovação", value: calc.taxaReprovacao * 100, description: "Peças reprovadas sobre o total produzido.", suffix: "%" },
     { title: "Produção líquida", value: calc.producaoLiquida, description: "Total efetivo de peças aprovadas.", suffix: " peças" },
