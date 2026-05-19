@@ -137,7 +137,7 @@ export default function OeePage() {
 
           <div className="print-only-title">Análise OEE</div>
 
-          <div className="print-area"><OeeContextForm values={context} onChange={(field, value) => setContext((p) => ({ ...p, [field]: value }))} />
+          <div className="print-area" style={{ display: "grid", gap: 14 }}><OeeContextForm values={context} onChange={(field, value) => setContext((p) => ({ ...p, [field]: value }))} />
           <OeeInputCard values={inputs} onChange={(field, value) => setInputs((p) => ({ ...p, [field]: Number.isFinite(value) ? Math.max(0, value) : 0 }))} />
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>

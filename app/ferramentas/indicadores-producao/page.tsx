@@ -124,7 +124,7 @@ export default function IndicadoresProducaoPage() {
               {Object.entries({ "Empresa / Ambiente": "empresa", "Unidade / Planta": "unidade", Setor: "setor", Linha: "linha", Equipamento: "equipamento", Produto: "produto", "Ordem de Produção": "ordemProducao", Turno: "turno", "Data da coleta": "dataColeta" } as const).map(([label, key]) => (
                 <label key={key} style={{ display: "grid", gap: 6, fontSize: 14 }}>
                   <span style={{ color: "#374151" }}>{label}</span>
-                  <input value={context[key]} onChange={(e) => setContext((p) => ({ ...p, [key]: e.target.value }))} style={{ background: "#fff", color: "#111827", border: "1px solid #d1d5db", borderRadius: 8, padding: "8px 10px" }} />
+                  <input type={key === "dataColeta" ? "date" : "text"} value={context[key]} onChange={(e) => setContext((p) => ({ ...p, [key]: e.target.value }))} style={{ background: "#fff", color: "#111827", border: "1px solid #d1d5db", borderRadius: 8, padding: "8px 10px" }} />
                 </label>
               ))}
             </div>

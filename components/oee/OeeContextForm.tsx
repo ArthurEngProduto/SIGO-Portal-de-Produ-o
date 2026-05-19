@@ -25,7 +25,7 @@ export default function OeeContextForm({ values, onChange }: Props) {
         {fields.map((f) => (
           <label key={f.key} style={{ display: "grid", gap: 6, fontSize: 14 }}>
             <span style={{ color: "#374151" }}>{f.label}</span>
-            <input value={values[f.key]} onChange={(e) => onChange(f.key, e.target.value)} style={{ background: "#fff", color: "#111827", border: "1px solid #d1d5db", borderRadius: 8, padding: "8px 10px" }} />
+            <input type={f.key === "dataColeta" ? "date" : "text"} value={values[f.key]} onChange={(e) => onChange(f.key, e.target.value)} style={{ background: "#fff", color: "#111827", border: "1px solid #d1d5db", borderRadius: 8, padding: "8px 10px" }} />
           </label>
         ))}
       </div>
