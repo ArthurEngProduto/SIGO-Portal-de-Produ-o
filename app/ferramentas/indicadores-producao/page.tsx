@@ -71,7 +71,7 @@ export default function IndicadoresProducaoPage() {
       <div style={{ display: "grid", minHeight: "100vh" }}>
         <Sidebar ferramentasMenu={["Calculadora OEE", "Indicadores de Produção", "Produtividade", "Paradas", "Perdas e Refugos"]} />
 
-        <section style={{ padding: 24, marginLeft: 260, display: "grid", gap: 14 }}>
+        <section className="indicadores-content" style={{ padding: 24, marginLeft: 260, display: "grid", gap: 14 }}>
           <header className="screen-only" style={{ background: "linear-gradient(135deg, #163b75 0%, #1f4f96 100%)", borderRadius: 20, padding: 36, color: "#fff", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.18)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 28, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 18, flex: "1 1 360px", minWidth: 280 }}>
               <div style={{ width: 64, height: 64, borderRadius: 16, background: "rgba(255,255,255,0.16)", display: "grid", placeItems: "center", boxShadow: "inset 0 1px 0 rgba(255,255,255,.26)" }}>
@@ -209,6 +209,22 @@ export default function IndicadoresProducaoPage() {
           </section>
         </section>
       </div>
+      <style jsx global>{`
+        @media print {
+          aside,
+          nav,
+          .screen-only,
+          button {
+            display: none !important;
+            visibility: hidden !important;
+          }
+
+          .indicadores-content {
+            margin-left: 0 !important;
+            padding: 0 !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
