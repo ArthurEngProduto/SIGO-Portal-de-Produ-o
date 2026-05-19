@@ -127,7 +127,18 @@ export default function IndicadoresProducaoPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
             {indicatorCards.map((card) => {
-              const status = getStatus(card.title === "Produção líquida" ? (inputs.metaProducao > 0 ? (card.value / inputs.metaProducao) * 100 : 0) : card.value);
+              const statusValue = card.title === "Produção líquida"
+                ? (inputs.metaProducao > 0 ? (card.value / inputs.metaProducao) * 100 : 0)
+                : card.value;
+
+              const status = card.title === "Taxa de reprovação"
+                ? statusValue <= 5
+                  ? { label: "Bom", color: "#16a34a" }
+                  : statusValue <= 10
+                    ? { label: "Atenção", color: "#f59e0b" }
+                    : { label: "Crítico", color: "#dc2626" }
+                : getStatus(statusValue);
+
               return (
                 <article key={card.title} style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
                   <div style={{ background: "#123a73", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", display: "flex", justifyContent: "space-between" }}>
