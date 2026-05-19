@@ -217,7 +217,7 @@ export default function ProdutividadePage() {
 
             <section style={{ background: "#fff", border: "1px solid #dbe2ea", borderRadius: 12, boxShadow: "0 1px 3px rgba(16,24,40,.06)" }}>
               <div style={{ background: "#123a73", color: "#fff", padding: "10px 14px", borderRadius: "12px 12px 0 0", fontWeight: 700 }}>Resumo operacional</div>
-              <div style={{ padding: 14, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 10, color: "#1f2937" }}>
+              <div style={{ padding: 14, display: "flex", flexDirection: "column", gap: 8, color: "#1f2937" }}>
                 {[
                   ["Meta planejada", `${inputs.metaProducao.toFixed(0)} peças`],
                   ["Produção realizada", `${inputs.quantidadeProduzida.toFixed(0)} peças`],
